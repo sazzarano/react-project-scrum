@@ -1,15 +1,35 @@
-import React, {Component} from 'react';
-import ShareSortList from './ShareSortList';
+import React, {Component} from "react";
+import ShareSortList from "./ShareSortList";
+import { connect } from "react-redux";
 
 class App extends Component {
   render() {
+    const { lists } = this.props;
     return (
       <div className="App">
-        <h2>Hello World!</h2>
-        <ShareSortList title="testing"/>
+        <h2>ShareSort</h2>
+        <div style={ styles.listsContainer }>
+          {lists.map(list => (
+            <ShareSortList 
+              title={list.title}
+              cards={list.cards}
+            />
+          ))}
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const styles = {
+  listsContainer: {
+    display: "flex",
+    flexDirection: "row",
+  }
+}
+
+const mapStateToProps = state => ({
+  lists: state.lists
+});
+
+export default connect(mapStateToProps) (App);
