@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ShareSortList from "./ShareSortList";
 import { connect } from "react-redux";
+import ShareSortActionButton from "./ShareSortActionButton";
 
 class App extends Component {
   render() {
@@ -11,10 +12,12 @@ class App extends Component {
         <div style={ styles.listsContainer }>
           {lists.map(list => (
             <ShareSortList 
+              key={list.id}
               title={list.title}
               cards={list.cards}
             />
           ))}
+          <ShareSortActionButton list />
         </div>
       </div>
     );

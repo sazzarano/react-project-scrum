@@ -1,16 +1,19 @@
 import React from "react";
 import ShareSortCard from "./ShareSortCard";
 import listsReducer from "../reducers/listsReducer";
+import ShareSortActionButton from "./ShareSortActionButton";
 
 const ShareSortList = ({ title, cards }) => {
     return (
-        <div style={styles.container}>
-            <h4>{title}</h4>
+        <div style={ styles.container }>
+            <h4>{ title }</h4>
             { cards.map(card => (
                 <ShareSortCard 
-                    text={card.text} 
+                    key={ card.id }
+                    text={ card.text } 
                 />
-            )) }
+            ))}
+            <ShareSortActionButton />
         </div>
     )
 }
@@ -19,6 +22,7 @@ const styles = {
     container: {
         backgroundColor: "#dfe3e6",
         borderRadius: 3,
+        height: "100%",
         width: 300,
         padding: "5px",
         marginRight: 8
