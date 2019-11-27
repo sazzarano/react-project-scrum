@@ -4,7 +4,7 @@ import Icon from "@material-ui/core/Icon";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import  { addList, addCard } from "../actions";
+import { addList, addCard } from "../actions";
 
 class ShareSortActionButton extends React.Component {
     state = {
@@ -96,12 +96,12 @@ class ShareSortActionButton extends React.Component {
                     padding: "6px 8px 2px"
                 }}>
                     <Textarea 
-                        placeholder={ placeholder }
+                        placeholder = { placeholder }
                         autoFocus
-                        onBlur={ this.closeForm }
-                        value={ this.state.text }
-                        onChange={ this.handleInputChange }
-                        style={{
+                        onBlur = { this.closeForm }
+                        value = { this.state.text }
+                        onChange = { this.handleInputChange }
+                        style = {{
                             resize: "none",
                             width: "100%",
                             overflow: "hidden",
@@ -112,15 +112,15 @@ class ShareSortActionButton extends React.Component {
                 </Card>
                 <div style={styles.formButtonGroup}>
                     <Button 
-                        onMouseDown={ list ? this.handleAddList : this.handleAddCard }
-                        variant="contained" 
-                        style={{
+                        onMouseDown = { list ? this.handleAddList : this.handleAddCard }
+                        variant = "contained" 
+                        style = {{
                             color: "white",
                             backgroundColor: "#5aac44"
                     }}>
                         { buttonTitle }
                     </Button>
-                    <Icon style={{
+                    <Icon style = {{
                         marginLeft: 8,
                         cursor: "pointer"
                     }}>
