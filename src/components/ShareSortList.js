@@ -3,7 +3,7 @@ import ShareSortCard from "./ShareSortCard";
 import listsReducer from "../reducers/listsReducer";
 import ShareSortActionButton from "./ShareSortActionButton";
 
-const ShareSortList = ({ title, cards }) => {
+const ShareSortList = ({ title, cards, listID }) => {
     return (
         <div style={ styles.container }>
             <h4>{ title }</h4>
@@ -13,7 +13,7 @@ const ShareSortList = ({ title, cards }) => {
                     text={ card.text } 
                 />
             ))}
-            <ShareSortActionButton />
+            <ShareSortActionButton listID={ listID } />
         </div>
     )
 }
