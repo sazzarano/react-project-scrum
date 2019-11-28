@@ -2,19 +2,31 @@ import React from "react";
 import ShareSortCard from "./ShareSortCard";
 import listsReducer from "../reducers/listsReducer";
 import ShareSortActionButton from "./ShareSortActionButton";
+import { Droppable } from "react-beautiful-dnd";
 
 const ShareSortList = ({ title, cards, listID }) => {
     return (
-        <div style={ styles.container }>
-            <h4>{ title }</h4>
-            { cards.map(card => (
-                <ShareSortCard 
-                    key={ card.id }
-                    text={ card.text } 
-                />
-            ))}
-            <ShareSortActionButton listID={ listID } />
-        </div>
+        <Droppable droppableId={String(listID)}>
+            {(provided) => (
+                <div 
+                    {...provided.droppableProps} 
+                    ref={provided.innerRef} 
+                    style={ styles.container }
+                >
+                    <h4>{ title }</h4>
+                    {cards.map((card, index) => (
+                        <ShareSortCard 
+                            key={ card.id }
+                            index= { index }
+                            text={ card.text } 
+                            id={ card.id }
+                        />
+                    ))}
+                    <ShareSortActionButton listID={ listID } />
+                    { provided.placeholder }
+                </div>
+            )}
+        </Droppable>
     )
 }
 

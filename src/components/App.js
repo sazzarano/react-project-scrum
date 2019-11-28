@@ -2,11 +2,18 @@ import React, {Component} from "react";
 import ShareSortList from "./ShareSortList";
 import { connect } from "react-redux";
 import ShareSortActionButton from "./ShareSortActionButton";
+import { DragDropContext } from "react-beautiful-dnd";
 
 class App extends Component {
+
+  onDragEnd = () => {
+
+  }
+
   render() {
     const { lists } = this.props;
     return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
       <div className="App">
         <h2>ShareSort</h2>
         <div style={ styles.listsContainer }>
@@ -21,6 +28,7 @@ class App extends Component {
           <ShareSortActionButton list />
         </div>
       </div>
+      </DragDropContext>
     );
   }
 }

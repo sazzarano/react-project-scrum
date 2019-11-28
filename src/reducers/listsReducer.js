@@ -1,44 +1,42 @@
 import { CONSTANTS } from "../actions";
 
-let listID = 4;
-let cardID = 4;
+let listID = 2;
+let cardID = 5;
 
 const initialState = [
     {
         title: "Initial List",
-        id: 0,
+        id: `list-${0}`,
         cards: [
             {
-                id: 0,
+                id: `card-${0}`,
                 text: "1st Static List/Card"
             },
             {
-                id: 1,
+                id: `card-${1}`,
                 text: "2nd Static List/Card"
             }
         ]
     },
     {
         title: "Second List",
-        id: 1,
+        id: `list-${1}`,
         cards: [
             {
-                id: 0,
+                id: `card-${2}`,
                 text: "3rd Static List/Card"
             },
             {
-                id: 1,
+                id: `card-${3}`,
                 text: "4th Static List/Card"
             },
             {
-                id: 2,
+                id: `card-${4}`,
                 text: "5th Static List/Card"
             }
         ]
     }
 ]
-
-
 
 const listsReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -46,7 +44,7 @@ const listsReducer = (state = initialState, action) => {
             const newList = {
                 title: action.payload,
                 cards: [],
-                id: listID
+                id: `list-${listID}`
             }
             listID += 1;
             return [...state, newList];
@@ -54,7 +52,7 @@ const listsReducer = (state = initialState, action) => {
         case CONSTANTS.ADD_CARD:
             const newCard = {
                 text: action.payload.text,
-                id: cardID
+                id: `card-${cardID}`
             }
             cardID += 1;
 
