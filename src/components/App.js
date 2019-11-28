@@ -3,11 +3,26 @@ import ShareSortList from "./ShareSortList";
 import { connect } from "react-redux";
 import ShareSortActionButton from "./ShareSortActionButton";
 import { DragDropContext } from "react-beautiful-dnd";
+import { sort } from "../actions";
 
 class App extends Component {
 
-  onDragEnd = () => {
+  onDragEnd = (result) => {
+    const { destination, source, draggableID } = result;
 
+    if (!destination) {
+      return;
+    }
+
+    this.props.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableID
+      )
+    );
   }
 
   render() {
