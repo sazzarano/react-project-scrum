@@ -4,6 +4,12 @@ import { connect } from "react-redux";
 import ShareSortActionButton from "./ShareSortActionButton";
 import { DragDropContext } from "react-beautiful-dnd";
 import { sort } from "../actions";
+import styled from "styled-components";
+
+const ListContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 class App extends Component {
 
@@ -31,7 +37,7 @@ class App extends Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
       <div className="App">
         <h2>ShareSort</h2>
-        <div style={ styles.listsContainer }>
+        <ListContainer>
           {lists.map(list => (
             <ShareSortList 
               listID={list.id}
@@ -41,17 +47,10 @@ class App extends Component {
             />
           ))}
           <ShareSortActionButton list />
-        </div>
+        </ListContainer>
       </div>
       </DragDropContext>
     );
-  }
-}
-
-const styles = {
-  listsContainer: {
-    display: "flex",
-    flexDirection: "row",
   }
 }
 

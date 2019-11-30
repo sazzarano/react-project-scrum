@@ -3,15 +3,24 @@ import ShareSortCard from "./ShareSortCard";
 import listsReducer from "../reducers/listsReducer";
 import ShareSortActionButton from "./ShareSortActionButton";
 import { Droppable } from "react-beautiful-dnd";
+import styled from "styled-components";
+
+const ListContainer = styled.div`
+    background-color: #dfe3e6;
+    border-radius: 3px;
+    height: 100%;
+    width: 300px;
+    padding: 5px;
+    margin-right: 8px;
+`;
 
 const ShareSortList = ({ title, cards, listID }) => {
     return (
         <Droppable droppableId={String(listID)}>
             {(provided) => (
-                <div 
+                <ListContainer
                     {...provided.droppableProps} 
                     ref={provided.innerRef} 
-                    style={ styles.container }
                 >
                     <h4>{ title }</h4>
                     {cards.map((card, index) => (
@@ -24,21 +33,10 @@ const ShareSortList = ({ title, cards, listID }) => {
                     ))}
                     <ShareSortActionButton listID={ listID } />
                     { provided.placeholder }
-                </div>
+                </ListContainer>
             )}
         </Droppable>
     )
-}
-
-const styles = {
-    container: {
-        backgroundColor: "#dfe3e6",
-        borderRadius: 3,
-        height: "100%",
-        width: 300,
-        padding: "5px",
-        marginRight: 8
-    }
-}
+};
 
 export default ShareSortList;
